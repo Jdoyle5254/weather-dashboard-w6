@@ -1,0 +1,29 @@
+header {
+    text-align: center;
+    font-family: 'Comfortaa', cursive;
+    background-color: lightskyblue !important;
+}
+
+body {
+    background-color: lightgray;
+}
+
+p {
+    font-family: 'Comfortaa', cursive;  
+}
+
+#results {
+    font-family: 'Comfortaa', cursive; 
+    font-size: larger;
+    font-weight: bold;
+}
+
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: lightskyblue;
+    color: black;
+    text-align: center;
+  }

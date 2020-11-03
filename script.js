@@ -25,8 +25,12 @@
 // THEN I am presented with the last searched city forecast  we would need to utilize local storage to keep the previous search data in place (I have used this previously in two activities)
 
 // ```
+// not required but I felt this to be a nice addition to the page.  
+$("#currentDay").text(moment().format('MMMM Do YYYY, h:mm a'));
+    
+// here we are using the api key to make the ajax call to openweathermap
 var cityName = "London"
-    var queryURL = "api.openweathermap.org/data/2.5/forecast?q=London,us&mode=xml&appid=37289ef0ebc892b45b4494eafa88ceac"
+var queryURL = "api.openweathermap.org/data/2.5/forecast?q=London,us&mode=json&appid=37289ef0ebc892b45b4494eafa88ceac"
 
 $.ajax({
     url: queryURL,  
@@ -34,3 +38,31 @@ $.ajax({
   }).then(function(response) {
     console.log(response);
   });
+
+//   code to get and store inputs by user 
+//   function highScore() {
+            
+//     var name = userName.value.trim();
+//     var userScore = {
+//         score: score,
+//         name: name
+//     };
+//     var highScores = JSON.parse(window.localStorage.getItem("highscores")) || [];
+//     highScores.push(userScore);
+//     window.localStorage.setItem("highscores", JSON.stringify(highScores));
+
+//     var gameEnds = document.querySelector("#game-over-area")
+//     gameEnds.setAttribute("class", "hide")
+   
+//     var leaderBoard = document.querySelector("#leaderboard-area")
+//     leaderBoard.removeAttribute("class");
+    
+//     var listItem = document.getElementById("users-scores")
+//     listItem.innerHTML = "";
+
+//     highScores.forEach(function(score) {
+//         var liTag = document.createElement("li")
+//         liTag.textContent = score.name
+//         listItem.appendChild(liTag)
+//     })
+// }
