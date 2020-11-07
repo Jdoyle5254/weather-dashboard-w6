@@ -1,7 +1,11 @@
 header {
     text-align: center;
     font-family: 'Comfortaa', cursive;
-    background-color: lightskyblue !important;
+    background-image: url("https://image.freepik.com/free-photo/clear-air-fly-fantastic-travel_1232-3824.jpg")!important;
+}
+
+.lead {
+    font-weight: bolder;
 }
 
 body {
@@ -12,10 +16,25 @@ p {
     font-family: 'Comfortaa', cursive;  
 }
 
-#results {
+#results  {
     font-family: 'Comfortaa', cursive; 
-    font-size: larger;
+    font-size: xx-large ;
     font-weight: bold;
+}
+#temp #humidity #wind {
+    font-family: 'Comfortaa', cursive; 
+    font-size: x-large;
+
+}
+
+.day-1 .day-2  .day-3  .day-4 .day-5  {
+    background-color: blue;
+    padding-top: 50px;
+    color: black
+    font-weight: bolder;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-bottom: 25px;
 }
 
 footer {
