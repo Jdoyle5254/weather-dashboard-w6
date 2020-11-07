@@ -15,18 +15,68 @@
         <p class="lead">Welcome to your weather dashboard.</p>
         <p id="currentDay" class="lead"></p>
       </header>
+      <!-- Here is the main container of 2 columns -->
     <div class="container">
         <div class= "row"> 
-            <div class= "col 2"> 
+            <!-- Here displays the search field & button -->
+            <div class= "col-3"> 
                 <p>Where Ya Going?</p>
                 <p>Input City Name Here</p>
-            <input id="cityName" type="text"> <button id="mainSearch" type="submit"><i class="fa fa-search"></i></button>
-                <p>Previous Searches</p>
+            <input id="cityName" type="text"> 
+            <button id="mainSearch" type="submit"><i class="fa fa-search"></i></button>
+                <!-- Here is the saved previous search -->
+                 <p>Previous Searches</p>
                 <div id="cityPrv"></div>
             </div>
-            <div class="col 10">
-                <h1 id="results">Here is your Forecast: </h1>
+            <!-- Here is the Forecast for the current city -->
+            <div class="col-9">
+                <div class="row">
+                <div class="col">
+                    <h1 id="results">Here is your Forecast: </h1>
+                    <div id="citySearch"></div>
+                    <div id="temp"></div>
+                    <div id="humidity"></div>
+                    <div id="wind"></div>
+                </div>
+                
+                </div>
+            <div class="row">
+                <div class="col-2 day-1">
+                    <div class="date"></div>
+                    <div class="icon"></div>
+                    <div class="temp-five"></div>
+                    <div class="humid"></div>
+                    
+                </div>
+                <div class="col-2 day-2">
+                    <div class="date"></div>
+                    <div class="icon"></div>
+                    <div class="temp-five"></div>
+                    <div class="humid"></div>
+                 </div>
+                <div class="col-2 day-3">
+                    <div class="date"></div>
+                    <div class="icon"></div>
+                    <div class="temp-five"></div>
+                    <div class="humid"></div>
+                </div>
+                <div class="col-2 day-4">
+                    <div class="date"></div>
+                    <div class="icon"></div>
+                    <div class="temp-five"></div>
+                    <div class="humid"></div>
+                </div>
+
+                <div class="col-2 day-5">
+                    <div class="date"></div>
+                    <div class="icon"></div>
+                    <div class="temp-five"></div>
+                    <div class="humid"></div>
+                </div>
+             </div>   
             </div>
+        
+            
         </div>
     </div>            
     <footer> Created by JenDoyle 2020</footer>  

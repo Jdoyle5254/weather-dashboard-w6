@@ -30,9 +30,7 @@
 // not required but I felt this to be a nice addition to the page.  
 $("#currentDay").text(moment().format('MMMM Do YYYY, h:mm a'));
  
-// We have an input field called City Name that a user inputs the city, this city would then be submitted to populate in the queryURL as + cityName +   the function would then run with the following 
-// here we are using the api key to make the ajax call to openweathermap based on the user input city.  
-
+// here is the function to make the API call to get the weather for the input city
 function getWeather(cityName) {
   
   var queryURL = "http://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&units=imperial&mode=json&appid=37289ef0ebc892b45b4494eafa88ceac"
@@ -41,28 +39,51 @@ $.ajax({
     url: queryURL,  
     method: "GET"
   }).then(function(response) {
-  
-    console.log(response.list[0].main.temp);
-    console.log(response.list[0].main.humidity);
-    console.log(response.list[0].weather.description);
-    console.log(response.list[0].wind.speed);
-    console.log(response.list); 
+   var cityW = {
+     city: response.city.name,
+     temp: response.list[0].main.temp,
+     humidity: response.list[0].main.humidity,
+     wind: response.list[0].wind.speed,
+   }
+   console.log(response)
+  //  Here the information for the General weather will appear
+   $("#citySearch").text("City: " + response.city.name);
+   $("#temp").text("Temperature: " + response.list[0].main.temp);
+   $("#humidity").text("Humidity: " + response.list[0].main.humidity);
+   $("#wind").text("Wind: " + response.list[0].wind.speed);
+
+   $(".icon").children().remove();
+  // here is a for loop to pull and populate the 5 day forecast for the selected city
+ 
+   for (var i=0; i < 6; i++ ) {
+      $(".day-" + (i + 1) + ">.date").text(moment(response.list[i * 8 + 3 ].dt_txt).format("MM/DD/YYYY"));
+      $(".day-"+ (i + 1) +">.temp-five").text(response.list[i * 8 + 3].main.temp);
+      $(".day-"+ (i + 1) +">.humid").text(response.list[i * 8 + 3].main.humidity);
+      $(".day-"+ (i + 1) +">.icon").append("<img src='https://openweathermap.org/img/wn/" + response.list[i * 8 + 3].weather[0].icon +".png'/>"); 
+   }
+    
   });
 }
-// getWeather("London")
 
-
+// this is the main click event to take the user input and apply to getWeather function, and also locally store for future use.
 $("#mainSearch").click(function(){ 
-     var cityArray = window.localStorage.getItem("cities") || [];
-    cityArray.push($("#cityName")[0].value);
-    window.localStorage.setItem("cities", (cityArray));
-})
+  
+    getWeather($("#cityName").val());
+    var cityArray = JSON.parse(window.localStorage.getItem("cities")) || [];
+    cityArray.push($("#cityName").val());
+    window.localStorage.setItem("cities", JSON.stringify(cityArray));
+    $("#cityPrv").children().remove();
+    renderCities();
+
+    // $(“#cityPrv”).append(cityName)
+});
+
  function renderCities () {
-   var cityBtns = window.localStorage.getItem("cities")
+   var cityBtns = JSON.parse(window.localStorage.getItem("cities")) || []
   for (var i = 0; i < cityBtns.length; i++)  {
     var a = $("<button>");
     // // Adding a class of movie to our button
-    a.addClass("city");
+    a.addClass("city-btn");
     // // Adding a data-attribute
     a.attr("data-name", cityBtns[i]);
     // // Providing the initial button text
@@ -70,10 +91,18 @@ $("#mainSearch").click(function(){
     // // Adding the button to the buttons-view div
     $("#cityPrv").append(a);
 
-    // cityBtns[i].addEventListener('click', userResponse)
+    // cityBtns[i].addEventListener('click', "#cityPrv")
   }
- }
- renderCities()
+$(".city-btn").click(function(){
+  getWeather($(this).attr("data-name"));
+})
+
+}
+ 
+ renderCities();
+
+  // $(“#mainSearch”).empty();
+  // $(“.city”).append(bookTitle,bookAuthor,bookCover);
 
 
   // after the queryURL is run the page displays the various weather information on the page for current weather and 5 day forecast
