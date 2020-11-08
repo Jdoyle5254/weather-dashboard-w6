@@ -9,7 +9,7 @@ $("#currentDay").text(moment().format('MMMM Do YYYY, h:mm a'));
 // here is the function to make the API call to get the weather for the input city
 function getWeather(cityName) {
   
-  var queryURL = "http://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&units=imperial&mode=json&appid=37289ef0ebc892b45b4494eafa88ceac"
+  var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&units=imperial&mode=json&appid=37289ef0ebc892b45b4494eafa88ceac"
 
 $.ajax({
     url: queryURL,  
@@ -42,7 +42,7 @@ $.ajax({
       $(".day-"+ (i + 1) +">.icon").append("<img src='https://openweathermap.org/img/wn/" + response.list[i * 8 + 3].weather[0].icon +".png'/>"); 
    }
    $.ajax({
-    url: "http://api.openweathermap.org/data/2.5/uvi?lat=" + response.city.coord.lat + "&lon=" + response.city.coord.lon + "&appid=37289ef0ebc892b45b4494eafa88ceac", 
+    url: "https://api.openweathermap.org/data/2.5/uvi?lat=" + response.city.coord.lat + "&lon=" + response.city.coord.lon + "&appid=37289ef0ebc892b45b4494eafa88ceac", 
     method: "GET"
   }).then(function(uvResponse) {
       $("#uv > span").text(uvResponse.value);
