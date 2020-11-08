@@ -47,9 +47,10 @@ $.ajax({
    }
    console.log(response)
   //  Here the information for the General weather will appear
-   $("#citySearch").text("City: " + response.city.name);
-   $("#temp").text("Temperature: " + response.list[0].main.temp);
-   $("#humidity").text("Humidity: " + response.list[0].main.humidity);
+   $("#citySearch").text(response.city.name);
+  //  $(".icon").append("<img src='https://openweathermap.org/img/wn/" + response.list[i * 8 + 3].weather[0].icon +".png'/>"); 
+   $("#temp").text("Temperature: " + response.list[0].main.temp.toFixed() + "F");
+   $("#humidity").text("Humidity: " + response.list[0].main.humidity + "%");
    $("#wind").text("Wind: " + response.list[0].wind.speed);
 
    $(".icon").children().remove();
@@ -57,8 +58,8 @@ $.ajax({
  
    for (var i=0; i < 6; i++ ) {
       $(".day-" + (i + 1) + ">.date").text(moment(response.list[i * 8 + 3 ].dt_txt).format("MM/DD/YYYY"));
-      $(".day-"+ (i + 1) +">.temp-five").text(response.list[i * 8 + 3].main.temp);
-      $(".day-"+ (i + 1) +">.humid").text(response.list[i * 8 + 3].main.humidity);
+      $(".day-"+ (i + 1) +">.temp-five").text(response.list[i * 8 + 3].main.temp.toFixed() + "F");
+      $(".day-"+ (i + 1) +">.humid").text(response.list[i * 8 + 3].main.humidity + "%");
       $(".day-"+ (i + 1) +">.icon").append("<img src='https://openweathermap.org/img/wn/" + response.list[i * 8 + 3].weather[0].icon +".png'/>"); 
    }
     
