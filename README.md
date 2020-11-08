@@ -1,4 +1,4 @@
-## Project Name Weather Dashboard
+## Project    Name Weather Dashboard
 
 ## Description 
 This site was created for anyone who is looking for current weather conditions in a specific city.  The site will disply the date, the teperature, the humidity, windspeed, and the UV index of the city specified. Also, displayed is the 5 day forecast for that city.  In addition the city is saved in a search, so the user can slect that city again to check the conditions and the 5 day forecast.  
@@ -27,9 +27,14 @@ The City names in the previous searches are also buttons, and the user can selec
 ![City Button Results](https://user-images.githubusercontent.com/69594945/98468885-22f78f00-21a2-11eb-80ed-e99af9486016.PNG)
 
 ## Credits
-https://openweathermap.org/forecast5
+Received much guidance this week from my Tutor, Kemp, and TA Pat and the Dream Team Group Project.      
+Also, API Documentation: https://openweathermap.org/forecast5
+
 I had addition infromation on the UV Scale used this to add the background color.  : 
 https://19january2017snapshot.epa.gov/sunsafety/uv-index-scale-1_.html#:~:text=11%20or%20more%3A%20Extreme,10%20a.m.%20and%204%20p.m.
+
+Google, W3 Schools for background image settings, and Mozilla, and StackOverFlow.  
+
 ## License
 MIT License
 
