@@ -45,23 +45,43 @@ $.ajax({
      humidity: response.list[0].main.humidity,
      wind: response.list[0].wind.speed,
    }
+
    console.log(response)
   //  Here the information for the General weather will appear
-   $("#citySearch").text(response.city.name);
-  //  $(".icon").append("<img src='https://openweathermap.org/img/wn/" + response.list[i * 8 + 3].weather[0].icon +".png'/>"); 
+   $("#citySearch").text(response.city.name + " " + moment(response.list.dt_txt).format("MM/DD/YYYY") );
+   $(".current-icon").children().remove();
+   $(".current-icon").append("<img src='https://openweathermap.org/img/wn/" + response.list[0].weather[0].icon +".png'/>"); 
    $("#temp").text("Temperature: " + response.list[0].main.temp.toFixed() + "F");
+   
    $("#humidity").text("Humidity: " + response.list[0].main.humidity + "%");
    $("#wind").text("Wind: " + response.list[0].wind.speed);
 
    $(".icon").children().remove();
   // here is a for loop to pull and populate the 5 day forecast for the selected city
  
-   for (var i=0; i < 6; i++ ) {
+   for (var i=0; i < 5; i++ ) {
       $(".day-" + (i + 1) + ">.date").text(moment(response.list[i * 8 + 3 ].dt_txt).format("MM/DD/YYYY"));
-      $(".day-"+ (i + 1) +">.temp-five").text(response.list[i * 8 + 3].main.temp.toFixed() + "F");
-      $(".day-"+ (i + 1) +">.humid").text(response.list[i * 8 + 3].main.humidity + "%");
+      $(".day-"+ (i + 1) +">.temp-five").text("Temp: " + response.list[i * 8 + 3].main.temp.toFixed() + "F");
+      $(".day-"+ (i + 1) +">.humid").text("Humidity: " + response.list[i * 8 + 3].main.humidity + "%");
       $(".day-"+ (i + 1) +">.icon").append("<img src='https://openweathermap.org/img/wn/" + response.list[i * 8 + 3].weather[0].icon +".png'/>"); 
    }
+   $.ajax({
+    url: "http://api.openweathermap.org/data/2.5/uvi?lat=" + response.city.coord.lat + "&lon=" + response.city.coord.lon + "&appid=37289ef0ebc892b45b4494eafa88ceac", 
+    method: "GET"
+  }).then(function(uvResponse) {
+      $("#uv > span").text(uvResponse.value);
+       
+      if (uvResponse.value  > 0.0 && uvResponse.value < 2.0) {
+         $("#uv > span").addClass("uv-low");
+      }
+      else if (uvResponse.value  > 2.0 && uvResponse.value < 5.0) {
+        $("#uv > span").addClass("uv-mod");
+     }
+     else if (uvResponse.value  > 5.0 && uvResponse.value < 10.0) {
+      $("#uv > span").addClass("uv-high");
+   }
+  });
+      
     
   });
 }
@@ -83,14 +103,16 @@ $("#mainSearch").click(function(){
    var cityBtns = JSON.parse(window.localStorage.getItem("cities")) || []
   for (var i = 0; i < cityBtns.length; i++)  {
     var a = $("<button>");
-    // // Adding a class of movie to our button
+    var li = $("<li>");
+    // // Adding a class of button
     a.addClass("city-btn");
     // // Adding a data-attribute
     a.attr("data-name", cityBtns[i]);
     // // Providing the initial button text
     a.text(cityBtns[i]);
     // // Adding the button to the buttons-view div
-    $("#cityPrv").append(a);
+    li.append(a);
+    $("#cityPrv").append(li);
 
     // cityBtns[i].addEventListener('click', "#cityPrv")
   }

@@ -16,7 +16,7 @@
         <p id="currentDay" class="lead"></p>
       </header>
       <!-- Here is the main container of 2 columns -->
-    <div class="container">
+    <div class="container bottom-space">
         <div class= "row"> 
             <!-- Here displays the search field & button -->
             <div class= "col-3"> 
@@ -26,23 +26,22 @@
             <button id="mainSearch" type="submit"><i class="fa fa-search"></i></button>
                 <!-- Here is the saved previous search -->
                  <p>Previous Searches</p>
-                <div id="cityPrv"></div>
+                <ul id="cityPrv"></ul>
             </div>
             <!-- Here is the Forecast for the current city -->
             <div class="col-9">
                 <div class="row">
                 <div class="col">
+                    <div class="row">
                     <h1 id="results">Here is your Forecast For:
-                         <div id="citySearch"></div> <div class="icon"></div> </h1>
-                
-                    <br>
-                    <div id="temp"></div>
-                   <br>  
-                    <div id="humidity"></div>
-                    <br>
-                    <div id="wind"></div>
-                    <br>
-                    <br>
+                         <div id="citySearch"></div> 
+                         </h1>
+                    <span class="current-icon"></span>  
+                </div>
+                    <div id="temp" class="row"></div>  
+                    <div id="humidity" class="row"></div>
+                    <div id="wind" class="row"></div>
+                    <div id="uv" class="row"> UV Index: <span> </span></div>
                     <br>
                 </div>
                 <br>
