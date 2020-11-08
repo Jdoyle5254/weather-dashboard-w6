@@ -1,6 +1,5 @@
-# weather-dashboard-w6
-## Project Name 
-Weather Dashboard
+## Project Name Weather Dashboard
+
 ## Description 
 This site was created for anyone who is looking for current weather conditions in a specific city.  The site will disply the date, the teperature, the humidity, windspeed, and the UV index of the city specified. Also, displayed is the 5 day forecast for that city.  In addition the city is saved in a search, so the user can slect that city again to check the conditions and the 5 day forecast.  
 ## Installation
@@ -9,15 +8,23 @@ To install and run locally from Git Hub repository, got to the repository: https
 
 You can access weather dashboard from a browser via this link:  https://jdoyle5254.github.io/weather-dashboard-w6/
 ## Usage
-When the User opens the site in the browser they presented with a search box, to search by city name.   User Inputs a city "Cairo".   
+When the User opens the site in the browser they presented with a Weather Dashboard
+![Header](https://user-images.githubusercontent.com/69594945/98468887-23902580-21a2-11eb-8df9-2334ba792411.PNG)
+
+A search box, to search by city name.   User Inputs a city "Cairo".   
+![Search Box](https://user-images.githubusercontent.com/69594945/98468890-2428bc00-21a2-11eb-9916-e72fde2ba997.PNG)
+
+![User Input](https://user-images.githubusercontent.com/69594945/98468894-24c15280-21a2-11eb-8ae9-2ef8331e2a14.PNG)
 
 The weather results for Cairo display on the page.
+![Search ResultsPNG](https://user-images.githubusercontent.com/69594945/98468891-2428bc00-21a2-11eb-8737-eb55d333ce8b.PNG)
 
 Cairo is also save in the Previous Searches.
+![Previous Searches ](https://user-images.githubusercontent.com/69594945/98468889-2428bc00-21a2-11eb-98c5-d7c1fb15f29f.PNG)
 
 The City names in the previous searches are also buttons, and the user can select a previous City, for example Dublin, and the weather for Dublin is displayed.  
-
- 
+![Previous Seach Buttons  PNG](https://user-images.githubusercontent.com/69594945/98468888-2428bc00-21a2-11eb-8a15-39cca975a39d.PNG)
+![City Button Results](https://user-images.githubusercontent.com/69594945/98468885-22f78f00-21a2-11eb-80ed-e99af9486016.PNG)
 
 ## Credits
 https://openweathermap.org/forecast5
